@@ -1,5 +1,13 @@
 package business;
 
-public class Checkout {
+import java.util.List;
 
+public class Checkout {
+	private List<CheckoutEntry> checkoutEntires;
+	
+	public Checkout(List<CheckoutEntry> checkoutEntires) {
+		this.checkoutEntires = checkoutEntires;
+	}
+	
+	
 }

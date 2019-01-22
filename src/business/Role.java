@@ -1,5 +1,7 @@
 package business;
 
-public class Role {
-
+public enum Role {
+	ADMIN,
+	MEMBER,
+	SUPERADMIN
 }
