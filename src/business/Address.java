@@ -1,6 +1,9 @@
 package business;
 
-public class Address {
+import java.io.Serializable;
+
+
+public class Address implements Serializable{
 	private String street;
 	private String city;
 	private String state;
@@ -27,6 +30,15 @@ public class Address {
 	public String getZip() {
 		return zip;
 	}
+	
+	
+	@Override
+	public String toString() {
+		
+		return new String(this.street + " " + this.city + " " + this.state + " " + this.zip );
+		
+	}
+	
 	
 	
 }
