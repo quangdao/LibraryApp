@@ -1,8 +1,8 @@
 package application;
 	
+import java.util.ArrayList;
 import java.util.List;
 
-import com.sun.corba.se.impl.orb.ParserTable.TestAcceptor1;
 
 import business.Address;
 import dataccess.ObjectInput;
@@ -18,11 +18,16 @@ public class Main extends Application {
 	
 	public  Main() {
 		//Test only
-		Address add1 = new Address("1000646546549999999 N 4th Street", "Fairfield", "IA", "52557");	
+		List<Object> list = new ArrayList<Object>();
+		Address add1 = new Address("88d5d5d5df55d5df N 4th Street", "Fairfield", "IA", "52557");
+		Address add2 = new Address("333333 N 4th Street", "Fairfield", "IA", "52557");	
+		list.add(add1);
+		list.add(add2);
+		
 		//new ObjectOutput("addresses", add1);
-		ObjectOutput.Output("addresses", add1);
-		List<Object> listAdd = ObjectInput.getObjectsByFilename("addresses");
-		for (Object address : listAdd) {
+		ObjectOutput.Output("addresses", list);
+		List<Address> listAdd = (List<Address>)ObjectInput.getObjectByFilename("addresses");
+		for (Address address : listAdd) {
 			System.out.println(address);
 		}
 	}

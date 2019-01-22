@@ -6,25 +6,27 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.sun.org.apache.bcel.internal.generic.NEW;
+
 import business.Address;
 
 public class ObjectInput {
 	
-	public static List<Object> getObjectsByFilename(String filename) {
+	public static Object getObjectByFilename(String filename) {
 		String OUTPUT_DIR = System.getProperty("user.dir") 
 				+ "\\src\\dataaccess\\storage\\"+ filename +".txt";
-		List<Object> list = new ArrayList<Object>();
 		boolean isExist = true;
+		Object object = new Object();
 		try {
-		
+			
 			//Read from the stored file
 			FileInputStream fileInputStream = new FileInputStream(new File(
 					OUTPUT_DIR));
 			ObjectInputStream input = new ObjectInputStream(fileInputStream);
 			while(isExist) {
 				if (fileInputStream.available() != 0) {
-					Address address = (Address) input.readObject();
-					list.add(address);
+					object = input.readObject();
 				}
 				else
 					isExist = false;
@@ -37,7 +39,7 @@ public class ObjectInput {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		return list;
+		return object;
 		
 		
 	}
