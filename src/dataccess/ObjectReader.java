@@ -11,7 +11,7 @@ import com.sun.org.apache.bcel.internal.generic.NEW;
 
 import business.Address;
 
-public class ObjectInput {
+public class ObjectReader {
 	
 	public static Object getObjectByFilename(String filename) {
 		String OUTPUT_DIR = System.getProperty("user.dir") 

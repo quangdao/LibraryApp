@@ -10,7 +10,7 @@ import java.io.ObjectOutputStream;
 
 
 
-public class ObjectOutput {	
+public class ObjectWriter {	
 	public static void Output(String filename, Object obj) {
 		String OUTPUT_DIR = System.getProperty("user.dir") 
 				+ "\\src\\dataaccess\\storage\\"+filename +".txt";
