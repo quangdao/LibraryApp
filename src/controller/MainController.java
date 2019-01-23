@@ -19,6 +19,10 @@ public class MainController extends Application {
         launch(args);
     }
 
+    public Stage getPrimaryStage() {
+        return primaryStage;
+    }
+
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("../ui/main/MainView.fxml"));
