@@ -154,6 +154,6 @@ public class MainController extends Application {
 
     @FXML
     public void showCheckoutRecords() {
-
+    
     }
 }
