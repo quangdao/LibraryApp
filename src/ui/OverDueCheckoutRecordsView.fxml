@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CheckoutRecordsController">
+    <children>
+        <TableView fx:id="overDueTable" layoutX="-12.0" layoutY="8.0" prefHeight="298.0" prefWidth="175.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <columns>
+                <TableColumn fx:id="isbnColumn" prefWidth="75.0" text="ISBN" />
+                <TableColumn fx:id="bookTitleColumn" prefWidth="75.0" text="Book Title" />
+                <TableColumn fx:id="numberOfCopyColumn" prefWidth="75.0" text="Number of Copy" />
+                <TableColumn fx:id="dueDateColumn" prefWidth="75.0" text="Due Date" />
+                <TableColumn fx:id="memberNameColumn" prefWidth="75.0" text="Member Name" />
+            </columns>
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+            </columnResizePolicy>
+        </TableView>
+    </children>
+</AnchorPane>

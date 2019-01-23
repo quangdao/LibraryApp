@@ -15,7 +15,7 @@ public class ObjectReader {
 	
 	public static Object getObjectByFilename(String filename) {
 		String OUTPUT_DIR = System.getProperty("user.dir") 
-				+ "\\src\\dataaccess\\storage\\"+ filename +".txt";
+				+ "//src//dataaccess//storage//"+ filename +".txt";
 		boolean isExist = true;
 		Object object = new Object();
 		try {

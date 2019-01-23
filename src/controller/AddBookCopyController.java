@@ -1,5 +1,6 @@
 package controller;
 
+import dataccess.ObjectReader;
 import javafx.fxml.FXML;
 
 public class AddBookCopyController {
@@ -10,6 +11,7 @@ public class AddBookCopyController {
 
     @FXML
     public void addBookCopy() {
+        System.out.println(ObjectReader.getObjectByFilename("book"));
 
     }
 }

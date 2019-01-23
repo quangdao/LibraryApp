@@ -1,5 +1,6 @@
 package controller;
 
+import dataccess.SampleData;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,10 +24,11 @@ public class MainController extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("../ui/main/MainView.fxml"));
         primaryStage = stage;
         primaryStage.setTitle("Library App");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setScene(new Scene(root));
         // primaryStage.show();
         this.showLogin();
     }
+
 
     public void showLogin() {
         try {
@@ -103,10 +105,10 @@ public class MainController extends Application {
     }
 
     @FXML
-    public void showSearchBook() {
+    public void showPrintCheckoutRecord() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainController.class.getResource("../ui/SearchBookView.fxml"));
+            loader.setLocation(MainController.class.getResource("../ui/PrintCheckoutRecordsView.fxml"));
             AnchorPane memberPage = loader.load();
 
             // Create the dialog Stage.
@@ -117,7 +119,32 @@ public class MainController extends Application {
             Scene scene = new Scene(memberPage);
             memberStage.setScene(scene);
 
-            SearchBookController controller = loader.getController();
+            PrintCheckoutRecordController controller = loader.getController();
+            controller.setMain(this);
+
+            // Show the dialog and wait until the user closes it
+            memberStage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void showCheckoutBook() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainController.class.getResource("../ui/CheckoutBookView.fxml"));
+            AnchorPane memberPage = loader.load();
+
+            // Create the dialog Stage.
+            Stage memberStage = new Stage();
+            memberStage.setTitle("Checkout Book");
+            memberStage.initModality(Modality.WINDOW_MODAL);
+            memberStage.initOwner(primaryStage);
+            Scene scene = new Scene(memberPage);
+            memberStage.setScene(scene);
+
+            CheckoutBookController controller = loader.getController();
             controller.setMain(this);
 
             // Show the dialog and wait until the user closes it
@@ -130,6 +157,8 @@ public class MainController extends Application {
     @FXML
     public void showCopyBook() {
         try {
+            SampleData.createSampleBooks();
+
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainController.class.getResource("../ui/AddBookCopyView.fxml"));
             AnchorPane memberPage = loader.load();
@@ -154,6 +183,51 @@ public class MainController extends Application {
 
     @FXML
     public void showCheckoutRecords() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainController.class.getResource("../ui/CheckoutRecordsView.fxml"));
+            AnchorPane memberPage = loader.load();
 
+            // Create the dialog Stage.
+            Stage memberStage = new Stage();
+            memberStage.setTitle("All Checkout Records");
+            memberStage.initModality(Modality.WINDOW_MODAL);
+            memberStage.initOwner(primaryStage);
+            Scene scene = new Scene(memberPage);
+            memberStage.setScene(scene);
+
+            CheckoutRecordsController controller = loader.getController();
+            controller.setMain(this);
+
+            // Show the dialog and wait until the user closes it
+            memberStage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void showSearchOverDueBook() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainController.class.getResource("../ui/SearchOverdueBook.fxml"));
+            AnchorPane memberPage = loader.load();
+
+            // Create the dialog Stage.
+            Stage memberStage = new Stage();
+            memberStage.setTitle("Overdue Checkout Records");
+            memberStage.initModality(Modality.WINDOW_MODAL);
+            memberStage.initOwner(primaryStage);
+            Scene scene = new Scene(memberPage);
+            memberStage.setScene(scene);
+
+            SearchOverdueBookController controller = loader.getController();
+            controller.setMain(this);
+
+            // Show the dialog and wait until the user closes it
+            memberStage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -13,7 +13,8 @@ import java.io.ObjectOutputStream;
 public class ObjectWriter {	
 	public static void Output(String filename, Object obj) {
 		String OUTPUT_DIR = System.getProperty("user.dir") 
-				+ "\\src\\dataaccess\\storage\\"+filename +".txt";
+				+ "//src//dataaccess//storage//"+filename +".txt";
+
 		try {
 			
 			// Store Serialized User Object in File

@@ -1,15 +1,9 @@
 package business;
 
-public class BookCopy extends Book{
-	private String copyID;
-	
-	
-	public BookCopy(String copyID, Book book) {
-		super(book.getBookID(), book.getTitle(), book.getIsbn(), book.getAuthors(), book.getNumberOfCopies());
-		this.copyID = copyID;
+import java.io.Serializable;
+
+public class BookCopy extends Book implements Serializable {
+	public BookCopy(Book book) {
+		super(book.getBookID(), book.getTitle(), book.getIsbn(), book.getAuthors());
 	}
-	
-	
-	
-	
 }
