@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane fx:controller="controller.AddNewLibraryMemberController" maxHeight="-Infinity" maxWidth="-Infinity"
+            minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="462.0"
+            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Label layoutX="24.0" layoutY="22.0" text="ID"/>
+        <Label layoutX="24.0" layoutY="62.0" text="First name"/>
+        <Label layoutX="25.0" layoutY="102.0" text="Last name"/>
+        <Label layoutX="24.0" layoutY="142.0" text="Phone"/>
+        <Label layoutX="25.0" layoutY="182.0" text="Street"/>
+        <Label layoutX="25.0" layoutY="222.0" text="City"/>
+        <Label layoutX="25.0" layoutY="262.0" text="State"/>
+        <Label layoutX="25.0" layoutY="302.0" text="Zip"/>
+        <TextField fx:id="idTextField" layoutX="124.0" layoutY="17.0" prefHeight="27.0" prefWidth="300.0"/>
+        <TextField fx:id="firstNameTextField" layoutX="124.0" layoutY="57.0" prefHeight="27.0" prefWidth="300.0"/>
+        <TextField fx:id="lastNameTextField" layoutX="124.0" layoutY="97.0" prefHeight="27.0" prefWidth="300.0"/>
+        <TextField fx:id="phoneTextField" layoutX="124.0" layoutY="137.0" prefHeight="27.0" prefWidth="300.0"/>
+        <TextField fx:id="streetTextField" layoutX="124.0" layoutY="177.0" prefHeight="27.0" prefWidth="300.0"/>
+        <TextField fx:id="cityTextField" layoutX="124.0" layoutY="217.0" prefHeight="27.0" prefWidth="300.0"/>
+        <TextField fx:id="stateTextField" layoutX="124.0" layoutY="257.0" prefHeight="27.0" prefWidth="300.0"/>
+        <TextField fx:id="zipTextField" layoutX="124.0" layoutY="297.0" prefHeight="27.0" prefWidth="300.0"/>
+        <Button layoutX="296.0" layoutY="351.0" mnemonicParsing="false" onAction="#addNewMember" text="Add New Member"/>
+        <Button layoutX="225.0" layoutY="351.0" mnemonicParsing="false" onAction="#cancel" text="Cancel"/>
+    </children>
+</AnchorPane>

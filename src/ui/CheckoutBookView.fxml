@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane fx:controller="controller.CheckoutBookController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="180.0" prefWidth="336.0" xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Label layoutX="37.0" layoutY="34.0" text="Member ID"/>
+        <Label layoutX="37.0" layoutY="73.0" text="ISBN"/>
+        <TextField fx:id="memberIdTextField" layoutX="127.0" layoutY="29.0"/>
+        <TextField fx:id="isbnNumberTextField" layoutX="127.0" layoutY="68.0"/>
+        <Button layoutX="217.0" layoutY="115.0" mnemonicParsing="false" onAction="#checkoutBook" text="Checkout"/>
+    </children>
+</AnchorPane>
