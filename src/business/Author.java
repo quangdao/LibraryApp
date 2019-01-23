@@ -4,8 +4,8 @@ public class Author extends Person {
 	private String credentials;
 	private String bio;
 	
-	public Author(String credendtials, String bio, Person person) {		
-		super(person.getID(), person.getFirstname(), person.getLastname(), person.getPhone(),person.getAddress());
+	public Author( String id, String firstname,String lastname, String phone, Address address,String credendtials, String bio) {		
+		super(id, firstname, lastname,phone,address);
 		this.credentials = credendtials;
 		this.bio = bio;
 	}
