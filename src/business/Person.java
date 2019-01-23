@@ -1,6 +1,5 @@
 package business;
 
-import com.sun.org.apache.bcel.internal.generic.I2D;
 
 public abstract class Person {
 	private String ID;
