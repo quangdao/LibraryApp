@@ -1,6 +1,8 @@
 package business;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Book implements Serializable {
@@ -15,6 +17,7 @@ public class Book implements Serializable {
         this.title = title;
         this.isbn = isbn;
         this.authors = authors;
+        bookCopy = new ArrayList<>(Arrays.asList(new BookCopy(this)));
     }
 
     public List<Author> getAuthors() {
@@ -38,6 +41,6 @@ public class Book implements Serializable {
     }
 
     public void addBookCopy(BookCopy book) {
-        this.bookCopy.add(book);
+        bookCopy.add(book);
     }
 }

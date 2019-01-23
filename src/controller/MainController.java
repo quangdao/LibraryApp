@@ -161,7 +161,7 @@ public class MainController extends Application {
     @FXML
     public void showCopyBook() {
         try {
-            SampleData.createSampleBooks();
+//            SampleData.createSampleBooks();
 
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainController.class.getResource("../ui/AddBookCopyView.fxml"));

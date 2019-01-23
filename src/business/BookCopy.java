@@ -2,8 +2,20 @@ package business;
 
 import java.io.Serializable;
 
-public class BookCopy extends Book implements Serializable {
+public class BookCopy implements Serializable {
+	private Book book;
+	private boolean available;
+
 	public BookCopy(Book book) {
-		super(book.getBookID(), book.getTitle(), book.getIsbn(), book.getAuthors());
+		this.available = true;
+		this.book = book;
+	}
+
+	public boolean getAvailable() {
+		return available;
+	}
+
+	public void setAvailable(boolean available) {
+		this.available = available;
 	}
 }
