@@ -1,6 +1,5 @@
 package business;
 
-
 import java.io.Serializable;
 
 public abstract class Person implements Serializable {
@@ -36,4 +35,10 @@ public abstract class Person implements Serializable {
 		return phone;
 	}
 	
+	
+	 
+	@Override
+	public String toString() {	
+		return new String(this.ID + " " + this.firstname + " " + this.lastname + " " + this.phone + " " + this.address);
+	}
 }

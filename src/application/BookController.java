@@ -6,7 +6,6 @@ import java.util.List;
 import business.Author;
 import business.Book;
 import business.BookCopy;
-import sun.security.util.Length;
 
 public class BookController {
 //	public static Book createNewBook (String title, String isbn, List<Author> authors, List<BookCopy> copyIDs) {
