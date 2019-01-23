@@ -2,6 +2,6 @@ package business;
 
 public enum Role {
 	ADMIN,
-	MEMBER,
+	LIBRARIAN,
 	SUPERADMIN
 }
