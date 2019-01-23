@@ -32,7 +32,7 @@ public class Main extends Application {
 //		Member member3 = new Member("2", "Jack", "Ma", "565869", add3);
 //		User user = new User(member, "admin", "admin", Role.ADMIN);
 //		User user2 = new User(member2, "super", "super", Role.SUPERADMIN);
-//		User user3 = new User(member3, "member", "member", Role.MEMBER);
+//		User user3 = new User(member3, "librarian", "librarian", Role.LIBRARIAN);
 //		
 //		list.add(user);
 //		list.add(user2);

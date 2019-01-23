@@ -5,12 +5,13 @@ import java.util.List;
 import business.User;
 import dataccess.ObjectReader;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import jdk.management.resource.internal.inst.UnixAsynchronousSocketChannelImplRMHooks;
 
 public class LoginController {
+    private MainController main;
 
     @FXML
     private TextField userIdTextField;
@@ -20,6 +21,10 @@ public class LoginController {
     private Stage loginStage;
     private Stage primaryStage;
 
+   
+    public void setMain(MainController mainController) {
+        this.main = mainController;
+    }
     public void setLoginStage(Stage primaryStage, Stage loginStage) {
         this.primaryStage = primaryStage;
         this.loginStage = loginStage;
@@ -30,8 +35,7 @@ public class LoginController {
     	for (User user : users) {
 			if (user.getUsername().equals(username) == true && user.getPassword().equals(password) == true) {
 				return user;
-			}	
-    		
+			}	   		
     	}    	
 		return null;	
     }
@@ -41,13 +45,35 @@ public class LoginController {
     //public void login() {
     	String username = userIdTextField.getText();
     	String password = passwordTextField.getText();
-    	User user = doLogin(username, password);
-    	
-    	
-        loginStage.close();
-        primaryStage.show();
+    	User user = doLogin(username, password);   	
+       
         System.out.println(user);
+        
+
+        Alert alert;
+       
+        
+        if (user != null) {
+        	 alert = new Alert(Alert.AlertType.WARNING);
+        	 alert.initOwner(main.getPrimaryStage());
+             alert.setTitle("Message");
+             alert.setHeaderText("Login");
+             alert.setContentText("Logged in successfully!");
+             alert.showAndWait();
+             loginStage.close();
+             primaryStage.show();
+		}
+       else {
+    	   	alert = new Alert(Alert.AlertType.WARNING);
+	    	alert.initOwner(main.getPrimaryStage());
+	        alert.setTitle("No Selection");
+	        alert.setHeaderText("No User Selected");
+	        alert.setContentText("Please select a user in the table.");
+	        alert.showAndWait();           
+		}
+        
         return user;
+        
     }
 
     public void cancel() {

@@ -58,26 +58,23 @@ public class AddNewLibraryMemberController {
 		return new Member(id, firstname, lastname, phone, address);
 	}
 	
-	public static User createUser (Member member, String username, String password, Role role) {
-		return new User(member, username, password, role);
-	}
+//	public static User createUser (Member member, String username, String password, Role role) {
+//		return new User(member, username, password, role);
+//	}
     
 	
 	
     @FXML
     public void addNewMember() {
-    	List<User> users = (List<User>)ObjectReader.getObjectByFilename("users"); 
+    	List<Member> members = (List<Member>)ObjectReader.getObjectByFilename("members");
+    	//List<Member> members = new ArrayList<Member>();
+    	members.add(createMember(firstNameTextField.getText(), lastNameTextField.getText(), phoneTextField.getText(), createAddress(streetTextField.getText(), cityTextField.getText(), stateTextField.getText(), zipTextField.getText())));    
+    	ObjectWriter.Output("members", members);   	
     	
-    	users.add(createUser(createMember(firstNameTextField.getText(), lastNameTextField.getText(), phoneTextField.getText(), createAddress(streetTextField.getText(), cityTextField.getText(), stateTextField.getText(), zipTextField.getText())), 
-    			"", "", Role.MEMBER));    
-    	//users.add(createUser(createMember("Jack", "Ma", "93933722", createAddress("123 North Street", "Fairfield", "Iowa", "52557")), "admin", "adminpassword", Role.ADMIN));
-    	//users.add(createUser(createMember("John", "Wick", "22432345", createAddress("999 south Street", "Fairfield", "Iowa", "52557")), "super", "superpassword", Role.SUPERADMIN));
-    	ObjectWriter.Output("users", users);
-    	
-    	
-//		for (User userobj : users){
-//			System.out.println(userobj);
-//		}
+    	for (Member member : members) {
+			System.out.println(member);
+		}
+
     }
 
     @FXML

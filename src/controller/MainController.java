@@ -14,7 +14,8 @@ import java.io.IOException;
 
 public class MainController extends Application {
     private Stage primaryStage;
-
+    private MainController main;
+    
     public static void main(String[] args) {
         launch(args);
     }
@@ -50,7 +51,7 @@ public class MainController extends Application {
 
             LoginController controller = loader.getController();
             controller.setLoginStage(primaryStage, dialogStage);
-
+            controller.setMain(this);
             // Show the dialog and wait until the user closes it
             dialogStage.showAndWait();
         } catch (IOException e) {
