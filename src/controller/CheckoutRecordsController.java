@@ -8,6 +8,7 @@ import dataaccess.ObjectReader;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
@@ -27,6 +28,8 @@ public class CheckoutRecordsController {
     TableColumn<CheckoutRecordEntryViewModel, String> checkoutDateColumn;
     @FXML
     TableColumn<CheckoutRecordEntryViewModel, String> dueDateColumn;
+    @FXML
+    TableColumn<CheckoutRecordEntryViewModel, String> memberNameColumn;
 
     public void setMain(MainController mainController) {
         this.main = mainController;
@@ -38,6 +41,7 @@ public class CheckoutRecordsController {
         isbnColumn.setCellValueFactory(new PropertyValueFactory<>("isbnNumber"));
         checkoutDateColumn.setCellValueFactory(new PropertyValueFactory<>("checkoutDate"));
         dueDateColumn.setCellValueFactory(new PropertyValueFactory<>("dueDate"));
+        memberNameColumn.setCellValueFactory(new PropertyValueFactory<>("memberName"));
         tableView.setItems(CheckoutRecordModels());
     }
 
@@ -46,7 +50,7 @@ public class CheckoutRecordsController {
         ObservableList<CheckoutRecordEntryViewModel> list = FXCollections.observableArrayList();
         for (Checkout entry : entries) {
             for (CheckoutEntry checkoutEntry : entry.getCheckoutEntries()) {
-                list.add(new CheckoutRecordEntryViewModel(checkoutEntry));
+                list.add(new CheckoutRecordEntryViewModel(checkoutEntry, entry.getMember()));
             }
         }
         return list;

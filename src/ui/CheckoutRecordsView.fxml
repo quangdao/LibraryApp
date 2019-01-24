@@ -13,6 +13,7 @@
            <columns>
                <TableColumn fx:id="isbnColumn" prefWidth="75.0" text="ISBN" />
                <TableColumn fx:id="bookNameColumn" prefWidth="75.0" text="Book Name" />
+               <TableColumn fx:id="memberNameColumn" prefWidth="75.0" text="Member Name" />
                <TableColumn fx:id="checkoutDateColumn" prefWidth="75.0" text="Checkout Date" />
                <TableColumn fx:id="dueDateColumn" prefWidth="75.0" text="Due Date" />
            </columns>
