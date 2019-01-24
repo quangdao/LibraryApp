@@ -85,11 +85,6 @@ public class AddNewLibraryMemberController {
     @FXML
     public void addNewMember() {
     	List<Member> members = (List<Member>)ObjectReader.getObjectByFilename("members");
-//    	List<Member> members = new ArrayList<Member>();
-    	members.add(createMember(firstNameTextField.getText(), lastNameTextField.getText(), phoneTextField.getText(), createAddress(streetTextField.getText(), cityTextField.getText(), stateTextField.getText(), zipTextField.getText())));
-    	ObjectWriter.Output("members", members);
-    	
-    	List<Member> members = (List<Member>)ObjectReader.getObjectByFilename("members");
     	if (idTextField.getText().isEmpty() || firstNameTextField.getText().isEmpty() || lastNameTextField.getText().isEmpty() || phoneTextField.getText().isEmpty() || streetTextField.getText().isEmpty() || cityTextField.getText().isEmpty() || stateTextField.getText().isEmpty() ||zipTextField.getText().isEmpty() ) {
     		ShowMessage("Please fill out all fields");
 		}
