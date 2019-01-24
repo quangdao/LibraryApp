@@ -1,13 +1,13 @@
 package controller;
 
-import business.Book;
-import business.BookCopy;
-import business.Member;
+import business.*;
 import dataccess.ObjectReader;
 import dataccess.ObjectWriter;
 import javafx.fxml.FXML;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javafx.scene.control.Alert;
@@ -27,8 +27,8 @@ public class CheckoutBookController {
     @FXML
     public void checkoutBook() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-
         List<Member> members = (ArrayList<Member>) ObjectReader.getObjectByFilename("members");
+        List<Book> books = (ArrayList<Book>) ObjectReader.getObjectByFilename("books");
 
         boolean isFoundMember = false;
         boolean isAvailable = false;
@@ -37,25 +37,29 @@ public class CheckoutBookController {
         for (Member member : members) {
             if (member.getID().equals(memberIdTextField.getText())) {
                 isFoundMember = true;
+                for (Book book: books) {
+                    if (book.getIsbn().equals(isbnNumberTextField.getText())) {
+                        isFoundBook = true;
+                        for (BookCopy bookCopy: book.getBookCopy()) {
+                            if (bookCopy.getAvailable()) {
+                                isAvailable = true;
+                                bookCopy.setAvailable(false);
+                                ObjectWriter.Output("books", books);
+                                // write to checkout entry foundMember
+                                this.checkoutRecord(bookCopy, member);
+                                break;
+                            }
+                        }
+                    }
+                    if (isAvailable) {
+                        break;
+                    }
+                }
                 break;
             }
         }
-        List<Book> books = (ArrayList<Book>) ObjectReader.getObjectByFilename("books");
 
-        if (isFoundMember) {
-            for (Book book: books) {
-                if (book.getIsbn().equals(isbnNumberTextField.getText())) {
-                    isFoundBook = true;
-                    for (BookCopy bookCopy: book.getBookCopy()) {
-                        if (bookCopy.getAvailable()) {
-                            isAvailable = true;
-                            bookCopy.setAvailable(false);
-                            ObjectWriter.Output("books", books);
-                        }
-                    }
-                }
-            }
-        } else {
+        if (!isFoundMember) {
             alert.initOwner(main.getPrimaryStage());
             alert.setTitle("No member found");
             alert.setContentText("System could not find this member!");
@@ -81,6 +85,16 @@ public class CheckoutBookController {
             alert.setContentText("System could not find this book!");
             alert.showAndWait();
         }
+    }
 
+    private void checkoutRecord(BookCopy bookCopy, Member member) {
+        LocalDate dueDate = LocalDate.now().plusDays(bookCopy.getLengthCheckout());
+        List<CheckoutEntry> checkoutEntries = Arrays.asList(new CheckoutEntry(bookCopy, LocalDate.now(), dueDate));
+        Checkout checkout = new Checkout(member, checkoutEntries);
+
+        List<Checkout> checkouts =  (List<Checkout>)ObjectReader.getObjectByFilename("checkouts");
+        checkouts.add(checkout);
+
+        ObjectWriter.Output("checkouts", checkouts);
     }
 }

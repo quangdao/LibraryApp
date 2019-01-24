@@ -1,20 +1,17 @@
 package business;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class CheckoutEntry {
-	private Book book;
-	private LocalDate date;
-	private LocalDate duedate;
-	private double fines;
-	private LocalDate returndate;
-	
-	
-	public CheckoutEntry(Book book, LocalDate date, LocalDate duedate, double fines,LocalDate returndate) {
-		this.book = book;
-		this.date = date;
-		this.duedate = duedate;
-		this.fines = fines;
-		this.returndate = returndate;
-	}
+public class CheckoutEntry implements Serializable {
+    private static final long serialVersionUID = -7269538443983243789L;
+    private BookCopy bookCopy;
+    private LocalDate date;
+    private LocalDate duedate;
+
+    public CheckoutEntry(BookCopy bookCopy, LocalDate date, LocalDate dueDate) {
+        this.bookCopy = bookCopy;
+        this.date = date;
+        this.duedate = dueDate;
+    }
 }

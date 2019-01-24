@@ -19,4 +19,8 @@ public class BookCopy implements Serializable {
 	public void setAvailable(boolean available) {
 		this.available = available;
 	}
+
+	public Integer getLengthCheckout() {
+		return book.getCheckoutLength();
+	}
 }

@@ -16,11 +16,7 @@ import java.io.IOException;
 
 public class MainController extends Application {
     private Stage primaryStage;
-    private MainController main;
-    
-    
-   
-    
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -50,7 +46,6 @@ public class MainController extends Application {
             btnAddBook.setVisible(false);
         }
     }
-
 
     public Role showLogin() {
         try {
@@ -183,7 +178,7 @@ public class MainController extends Application {
     @FXML
     public void showCopyBook() {
         try {
-            SampleData.createSampleBooks();
+            SampleData.createSampleData();
 
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainController.class.getResource("../ui/AddBookCopyView.fxml"));

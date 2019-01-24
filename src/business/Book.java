@@ -10,14 +10,16 @@ public class Book implements Serializable {
     private String bookID;
     private String title;
     private String isbn;
+    private Integer checkoutLength;
     private List<Author> authors;
     private List<BookCopy> bookCopy;
 
-    public Book(String bookID, String title, String isbn, List<Author> authors) {
+    public Book(String bookID, String title, String isbn, Integer checkoutLength, List<Author> authors) {
         this.bookID = bookID;
         this.title = title;
         this.isbn = isbn;
         this.authors = authors;
+        this.checkoutLength = checkoutLength;
         bookCopy = new ArrayList<>(Arrays.asList(new BookCopy(this)));
     }
 
@@ -39,6 +41,10 @@ public class Book implements Serializable {
 
     public String getTitle() {
         return title;
+    }
+
+    public Integer getCheckoutLength() {
+        return checkoutLength;
     }
 
     public void addBookCopy(BookCopy book) {
