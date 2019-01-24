@@ -18,6 +18,10 @@ public class SampleData {
         Member member2 = new Member("2", "Penh", "Lim", "34556346", add2);
         Member member3 = new Member("3", "Jack", "Ma", "565869", add3);
 
+        ObjectWriter.Output("members", new ArrayList<Member>(){
+            { add(member); add(member2); add(member3); }
+        });
+
         List<User> users = Arrays.asList(
                 new User(member, "admin", "admin", Role.ADMIN),
                 new User(member2, "super", "super", Role.SUPERADMIN),
@@ -33,14 +37,17 @@ public class SampleData {
 //        Book book2 = new Book("book2", "Fundamental Java Language", "isbn2", authors);
 //        Book book3 = new Book("book3", "Advanced Java Programming", "isbn3", authors);
 //        Book book4 = new Book("book4", "Spring Essential", "isbn4", authors);
+        book1.getBookCopy().get(0).setAvailable(false);
         List<Book> books = new ArrayList<>(Arrays.asList(book1));
         ObjectWriter.Output("books", books);
 
         // Sample checkout record
         LocalDate dueDate = LocalDate.now().plusDays(DEFAULT_CHECKOUT_LENGTH);
+
         List<CheckoutEntry> checkoutEntries = Arrays.asList(new CheckoutEntry(book1.getBookCopy().get(0), LocalDate.now(), dueDate));
         Checkout checkout = new Checkout(member, checkoutEntries);
-        List<Checkout> checkouts = Arrays.asList(checkout);
+        List<Checkout> checkouts = new ArrayList<Checkout>(){{add(checkout);}};
+
         ObjectWriter.Output("checkouts", checkouts);
 
         List<User> user4 = (List<User>) ObjectReader.getObjectByFilename("users");

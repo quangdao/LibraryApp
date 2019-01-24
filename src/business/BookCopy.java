@@ -23,4 +23,8 @@ public class BookCopy implements Serializable {
 	public Integer getLengthCheckout() {
 		return book.getCheckoutLength();
 	}
+
+	public Book getBook() {
+		return book;
+	}
 }

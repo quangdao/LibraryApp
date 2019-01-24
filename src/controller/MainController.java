@@ -205,6 +205,7 @@ public class MainController extends Application {
     @FXML
     public void showCheckoutRecords() {
         try {
+
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainController.class.getResource("../ui/CheckoutRecordsView.fxml"));
             AnchorPane memberPage = loader.load();

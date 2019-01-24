@@ -44,6 +44,7 @@ public class CheckoutBookController {
                             if (bookCopy.getAvailable()) {
                                 isAvailable = true;
                                 bookCopy.setAvailable(false);
+                                // would over all old data?
                                 ObjectWriter.Output("books", books);
                                 // write to checkout entry foundMember
                                 this.checkoutRecord(bookCopy, member);

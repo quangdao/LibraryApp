@@ -12,4 +12,8 @@ public class Checkout implements Serializable {
         this.member = member;
         this.checkoutEntires = checkoutEntries;
     }
+
+    public List<CheckoutEntry> getCheckoutEntries() {
+        return checkoutEntires;
+    }
 }

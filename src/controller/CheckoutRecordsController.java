@@ -1,30 +1,55 @@
 package controller;
 
+import java.util.List;
+
+import business.Checkout;
+import business.CheckoutEntry;
+import dataccess.ObjectReader;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import viewModel.CheckoutRecordEntry;
+
+import javafx.scene.control.cell.PropertyValueFactory;
+import viewModel.CheckoutRecordEntryViewModel;
 
 public class CheckoutRecordsController {
     private MainController main;
+
+    @FXML
+    private TableView<CheckoutRecordEntryViewModel> tableView;
+    @FXML
+    TableColumn<CheckoutRecordEntryViewModel, String> bookNameColumn;
+    @FXML
+    TableColumn<CheckoutRecordEntryViewModel, String> isbnColumn;
+    @FXML
+    TableColumn<CheckoutRecordEntryViewModel, String> checkoutDateColumn;
+    @FXML
+    TableColumn<CheckoutRecordEntryViewModel, String> dueDateColumn;
+
     public void setMain(MainController mainController) {
         this.main = mainController;
     }
 
     @FXML
-    private TableView<CheckoutRecordEntry> checkoutTable;
-    @FXML
-    private TableColumn<CheckoutRecordEntry, String> isbnColumn;
-    @FXML
-    private TableColumn<CheckoutRecordEntry, String> bookNameColumn;
-    @FXML
-    private TableColumn<CheckoutRecordEntry, String> checkoutDateColumn;
-    @FXML
-    private TableColumn<CheckoutRecordEntry, String> dueDateColumn;
-
-    @FXML
     public void initialize() {
-//        userIdColumn.setCellValueFactory(new PropertyValueFactory<>("userId"));
-//        permissionColumn.setCellValueFactory(new PropertyValueFactory<>("permission"));
+        bookNameColumn.setCellValueFactory(new PropertyValueFactory<>("bookTitle"));
+        isbnColumn.setCellValueFactory(new PropertyValueFactory<>("isbnNumber"));
+        checkoutDateColumn.setCellValueFactory(new PropertyValueFactory<>("checkoutDate"));
+        dueDateColumn.setCellValueFactory(new PropertyValueFactory<>("dueDate"));
+        tableView.setItems(CheckoutRecordModels());
+    }
+
+    private ObservableList<CheckoutRecordEntryViewModel> CheckoutRecordModels() {
+        List<Checkout> entries = (List<Checkout>) ObjectReader.getObjectByFilename("checkouts");
+        ObservableList<CheckoutRecordEntryViewModel> list = FXCollections.observableArrayList();
+        for (Checkout entry : entries) {
+            for (CheckoutEntry checkoutEntry : entry.getCheckoutEntries()) {
+                list.add(new CheckoutRecordEntryViewModel(checkoutEntry));
+            }
+        }
+        return list;
     }
 }
+
