@@ -26,4 +26,11 @@ public class CheckoutEntry implements Serializable {
     public LocalDate getDueDate() {
         return dueDate;
     }
+
+    @Override
+    public String toString() {
+        return String.format("{ISBN: %s, BookTitle: %s, CheckoutDate: %s, DueDate: %s}",
+                bookCopy.getBook().getIsbn(), bookCopy.getBook().getTitle(),
+                checkoutDate.toString(), dueDate.toString());
+    }
 }

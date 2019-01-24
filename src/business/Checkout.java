@@ -16,4 +16,8 @@ public class Checkout implements Serializable {
     public List<CheckoutEntry> getCheckoutEntries() {
         return checkoutEntries;
     }
+
+    public Member getMember() {
+        return member;
+    }
 }

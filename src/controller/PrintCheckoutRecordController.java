@@ -1,6 +1,17 @@
 package controller;
 
+import business.Checkout;
+import business.CheckoutEntry;
+import dataaccess.ObjectReader;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TextField;
+import viewModel.CheckoutRecordEntryViewModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class PrintCheckoutRecordController {
     private MainController main;
@@ -9,7 +20,21 @@ public class PrintCheckoutRecordController {
     }
 
     @FXML
-    public void printRecords() {
+    private TextField memberIdTextField;
 
+    @FXML
+    public void printRecords() {
+        String memberId = memberIdTextField.getText();
+
+        if (memberId != null) {
+            List<Checkout> entries = (List<Checkout>) ObjectReader.getObjectByFilename("checkouts");
+            for (Checkout entry : entries) {
+                if (memberId.equals(entry.getMember().getID())) {
+                    for (CheckoutEntry checkoutEntry : entry.getCheckoutEntries()) {
+                        System.out.println(checkoutEntry);
+                    }
+                }
+            }
+        }
     }
 }
