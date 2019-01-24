@@ -77,7 +77,7 @@ public class CheckoutBookController {
             } else {
                 alert.initOwner(main.getPrimaryStage());
                 alert.setTitle("No book available");
-                alert.setContentText("This book has no available!");
+                alert.setContentText("This book is not available!");
                 alert.showAndWait();
             }
         } else {

@@ -12,7 +12,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 
 public class MainController extends Application {
     private Stage primaryStage;
@@ -27,6 +29,13 @@ public class MainController extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        String OUTPUT_DIR = System.getProperty("user.dir")
+                + "//src//dataaccess//storage//users.txt";
+        File userFile = new File(OUTPUT_DIR);
+        if (!userFile.exists()) {
+            SampleData.createSampleData();
+        }
+
         Parent root = FXMLLoader.load(getClass().getResource("../ui/main/MainView.fxml"));
         primaryStage = stage;
         primaryStage.setTitle("Library App");
@@ -180,9 +189,6 @@ public class MainController extends Application {
     @FXML
     public void showCopyBook() {
         try {
-            
-        	SampleData.createSampleData();
-
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainController.class.getResource("../ui/AddBookCopyView.fxml"));
             AnchorPane memberPage = loader.load();

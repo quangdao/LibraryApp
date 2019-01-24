@@ -23,13 +23,12 @@ public class SampleData {
         });
 
         List<User> users = Arrays.asList(
-                new User(member, "admin", "admin", Role.ADMIN),
-                new User(member2, "super", "super", Role.SUPERADMIN),
-                new User(member3, "librarian", "librarian", Role.LIBRARIAN)
+                new User("admin", "admin", Role.ADMIN),
+                new User("super", "super", Role.SUPERADMIN),
+                new User("librarian", "librarian", Role.LIBRARIAN)
         );
        
-        //Sample Books data
-//        ObjectWriter.Output("users", users);
+        ObjectWriter.Output("users", users);
 //
 //        Address add1 = new Address("9387 NeverEnd 4th Street", "Fairfield", "IA", "52557");
 //        Address add2 = new Address("1 South 5th Street", "Chicago", "IL", "52557");

@@ -4,20 +4,14 @@ import java.io.Serializable;
 
 public class User implements Serializable{
 	private static final long serialVersionUID = -4950812670890222362L;
-	private Member member;
 	private String username;
 	private String password;
 	private Role role;
 	
-	public User(Member member, String username, String password, Role role) {
-		this.member = member;
+	public User(String username, String password, Role role) {
 		this.password = password;
 		this.username = username;
 		this.role = role;
-	}
-	
-	public Member getMember() {
-		return member;
 	}
 	
 	public String getPassword() {
@@ -30,10 +24,8 @@ public class User implements Serializable{
 		return role;
 	}
 	
-	
-	
 	@Override
 	public String toString() {
-		return new String(this.member + " " + this.username + " " +this.password + " " +  this.role.toString());
+		return new String(this.username + " " +this.password + " " +  this.role.toString());
 	}
 }
