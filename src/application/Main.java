@@ -1,15 +1,18 @@
 package application;
 	
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
 import business.Address;
+import business.Author;
+import business.Book;
 import business.Member;
 import business.Role;
 import business.User;
-import dataccess.ObjectReader;
-import dataccess.ObjectWriter;
+import dataaccess.ObjectReader;
+import dataaccess.ObjectWriter;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -19,11 +22,7 @@ import javafx.scene.layout.BorderPane;
 public class Main extends Application {
 	
 	
-public  Main() {
-		//Test only
 
-
-}
 	
 	@Override
 	public void start(Stage primaryStage) {

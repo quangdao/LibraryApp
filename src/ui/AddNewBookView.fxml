@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddNewBookController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddNewBookController">
     <children>
         <Label layoutX="129.0" layoutY="106.0" text="ISBN:" />
         <Label layoutX="129.0" layoutY="146.0" text="Title:" />
@@ -14,8 +17,8 @@
         <TextField fx:id="titleTextField" layoutX="261.0" layoutY="140.0" />
         <TextField fx:id="authorTextField" layoutX="261.0" layoutY="184.0" />
         <TextField fx:id="checkoutMaxTimeTextField" layoutX="261.0" layoutY="226.0" />
-        <Label layoutX="129.0" layoutY="232.0" text="Checkout Max Time:" />
+        <Label layoutX="129.0" layoutY="232.0" text="Checkout Max Days:" />
 
-        <Button layoutX="362.0" layoutY="327.0" mnemonicParsing="false" onAction="#addNewBook" text="Add Book" />
+        <Button layoutX="341.0" layoutY="266.0" mnemonicParsing="false" onAction="#addNewBook" text="Add Book" />
     </children>
 </AnchorPane>
