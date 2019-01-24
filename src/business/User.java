@@ -3,6 +3,7 @@ package business;
 import java.io.Serializable;
 
 public class User implements Serializable{
+	private static final long serialVersionUID = -4950812670890222362L;
 	private Member member;
 	private String username;
 	private String password;

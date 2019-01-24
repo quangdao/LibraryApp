@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Book implements Serializable {
+    private static final long serialVersionUID = 1413145946492697142L;
     private String bookID;
     private String title;
     private String isbn;
@@ -42,5 +43,9 @@ public class Book implements Serializable {
 
     public void addBookCopy(BookCopy book) {
         bookCopy.add(book);
+    }
+
+    public List<BookCopy> getBookCopy() {
+        return bookCopy;
     }
 }

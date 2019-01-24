@@ -67,7 +67,7 @@ public class AddNewLibraryMemberController {
     @FXML
     public void addNewMember() {
     	List<Member> members = (List<Member>)ObjectReader.getObjectByFilename("members");
-    	//List<Member> members = new ArrayList<Member>();
+//    	List<Member> members = new ArrayList<Member>();
     	members.add(createMember(firstNameTextField.getText(), lastNameTextField.getText(), phoneTextField.getText(), createAddress(streetTextField.getText(), cityTextField.getText(), stateTextField.getText(), zipTextField.getText())));    
     	ObjectWriter.Output("members", members);   	
     	
