@@ -14,7 +14,6 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Paths;
 
 public class MainController extends Application {
     private Stage primaryStage;
@@ -214,7 +213,6 @@ public class MainController extends Application {
     @FXML
     public void showCheckoutRecords() {
         try {
-
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainController.class.getResource("../ui/CheckoutRecordsView.fxml"));
             AnchorPane memberPage = loader.load();

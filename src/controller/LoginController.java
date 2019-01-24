@@ -64,6 +64,9 @@ public class LoginController {
         String username = userIdTextField.getText();
         String password = passwordTextField.getText();
         User user = doLogin(username, password);
+        if (user == null) {
+            return null;
+        }
         return user.getRole();
     }
 }
