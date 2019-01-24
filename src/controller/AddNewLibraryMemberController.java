@@ -16,9 +16,8 @@ import business.Member;
 import business.Person;
 import business.Role;
 import business.User;
-import dataccess.ObjectReader;
-import dataccess.ObjectWriter;
-import dataccess.ObjectReader;
+import dataaccess.ObjectReader;
+import dataaccess.ObjectWriter;
 
 public class AddNewLibraryMemberController {
     private MainController main;
@@ -57,12 +56,7 @@ public class AddNewLibraryMemberController {
         return new Address(street, city, state, zip);
     }
 
-    public static Person createAuthor(String id, String firstname, String lastname, String phone, Address address, String credendtials, String bio) {
-        //LocalDateTime currentTime = LocalDateTime.now();
-        //String id = ""+currentTime.getYear() + currentTime.getMonth() + currentTime.getDayOfMonth() +currentTime.getHour() +currentTime.getMinute()+currentTime.getSecond();
-        Person person = new Author(id, firstname, lastname, phone, address, credendtials, bio);
-        return person;
-    }
+    
 
     public static Member createMember(String id, String firstname, String lastname, String phone, Address address) {
         //LocalDateTime currentTime = LocalDateTime.now();
@@ -85,7 +79,9 @@ public class AddNewLibraryMemberController {
 
     @FXML
     public void addNewMember() {
-        List<Member> members = (List<Member>) ObjectReader.getObjectByFilename("members");
+    	List<Member> members = (List<Member>) ObjectReader.getObjectByFilename("members");
+       // List<Member> members = new ArrayList<Member>();
+
         if (idTextField.getText().isEmpty() || firstNameTextField.getText().isEmpty() || lastNameTextField.getText().isEmpty() || phoneTextField.getText().isEmpty() || streetTextField.getText().isEmpty() || cityTextField.getText().isEmpty() || stateTextField.getText().isEmpty() || zipTextField.getText().isEmpty()) {
             ShowMessage("Please fill out all fields");
         } else {

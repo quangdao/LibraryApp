@@ -1,7 +1,7 @@
 package controller;
 
 import business.Role;
-import dataccess.SampleData;
+import dataaccess.SampleData;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -77,6 +77,7 @@ public class MainController extends Application {
     @FXML
     public void showAddNewMember() {
         try {
+        	
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainController.class.getResource("../ui/AddNewLibraryMemberView.fxml"));
             AnchorPane memberPage = loader.load();
@@ -116,6 +117,7 @@ public class MainController extends Application {
             memberStage.setScene(scene);
 
             AddNewBookController controller = loader.getController();
+            controller.setAddBookStage(primaryStage, memberStage);
             controller.setMain(this);
 
             // Show the dialog and wait until the user closes it
@@ -178,7 +180,8 @@ public class MainController extends Application {
     @FXML
     public void showCopyBook() {
         try {
-            SampleData.createSampleData();
+            
+        	SampleData.createSampleData();
 
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainController.class.getResource("../ui/AddBookCopyView.fxml"));

@@ -1,4 +1,4 @@
-package dataccess;
+package dataaccess;
 
 import business.*;
 
@@ -23,9 +23,30 @@ public class SampleData {
                 new User(member2, "super", "super", Role.SUPERADMIN),
                 new User(member3, "librarian", "librarian", Role.LIBRARIAN)
         );
-
-        ObjectWriter.Output("users", users);
-
+       
+        //Sample Books data
+//        ObjectWriter.Output("users", users);
+//
+//        Address add1 = new Address("9387 NeverEnd 4th Street", "Fairfield", "IA", "52557");
+//        Address add2 = new Address("1 South 5th Street", "Chicago", "IL", "52557");
+//        Address add3 = new Address("11 East 6th Street", "San Jose", "CA", "52557");
+//
+//        Author author1 = new Author("au1", "Osama", "Binladen", "22456", add1,"Bachelor","Good author");
+//        Author author2 = new Author("au2", "George", "Bush", "34556346", add2,"Master","Nice author");
+//        Author author3 = new Author("au3", "Jack", "Ma", "565869", add3,"Phd","Excellent author");
+//        
+//        List<Author> listau1 = Arrays.asList(author1, author2);
+//        List<Author> listau2 = Arrays.asList(author2, author3);
+//        List<Author> listau3 = Arrays.asList(author1, author3);
+//
+//        List<Book> books = Arrays.asList(
+//       		 new Book("b1", "Life is easy", "isbn1", 7, listau1),
+//       		 new Book("b2", "Coding is easy", "isbn2", 2, listau2),
+//       		 new Book("b3", "Algorithm", "isbn3", 5, listau3)
+//               
+//        );
+//        ObjectWriter.Output("books", books);
+        
         // Sample books record
         Address address = new Address("1000 N4", "FairField", "Iowa", "52557");
         List<Author> authors = Arrays.asList(new Author("1", "Joe", "Brendy", "641-651-24XX", address, "granted", "Volleyball lover"));

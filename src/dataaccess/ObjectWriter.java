@@ -1,4 +1,4 @@
-package dataccess;
+package dataaccess;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;

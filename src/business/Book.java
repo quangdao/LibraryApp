@@ -54,4 +54,9 @@ public class Book implements Serializable {
     public List<BookCopy> getBookCopy() {
         return bookCopy;
     }
+    
+    @Override
+    public String toString() {
+    	return new String(this.bookID + " " + this.title + " " + this.isbn + " checkoutlength: " + this.checkoutLength + " " + this.authors + " " + this.bookCopy );
+    }
 }
