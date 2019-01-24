@@ -25,6 +25,7 @@ public class LoginController {
     public void setMain(MainController mainController) {
         this.main = mainController;
     }
+    
     public void setLoginStage(Stage primaryStage, Stage loginStage) {
         this.primaryStage = primaryStage;
         this.loginStage = loginStage;
@@ -54,21 +55,22 @@ public class LoginController {
        
         
         if (user != null) {
-        	 alert = new Alert(Alert.AlertType.WARNING);
+        	 alert = new Alert(Alert.AlertType.INFORMATION);
         	 alert.initOwner(main.getPrimaryStage());
              alert.setTitle("Message");
              alert.setHeaderText("Login");
              alert.setContentText("Logged in successfully!");
              alert.showAndWait();
              loginStage.close();
+             
              primaryStage.show();
 		}
        else {
     	   	alert = new Alert(Alert.AlertType.WARNING);
 	    	alert.initOwner(main.getPrimaryStage());
-	        alert.setTitle("No Selection");
-	        alert.setHeaderText("No User Selected");
-	        alert.setContentText("Please select a user in the table.");
+	        alert.setTitle("Message");
+	        alert.setHeaderText("Login");
+	        alert.setContentText("Invalid username and password, please try again");
 	        alert.showAndWait();           
 		}
         

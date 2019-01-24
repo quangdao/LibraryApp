@@ -10,11 +10,15 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.awt.Button;
 import java.io.IOException;
 
 public class MainController extends Application {
     private Stage primaryStage;
     private MainController main;
+    
+    
+   
     
     public static void main(String[] args) {
         launch(args);
@@ -30,8 +34,10 @@ public class MainController extends Application {
         primaryStage = stage;
         primaryStage.setTitle("Library App");
         primaryStage.setScene(new Scene(root));
+        
         // primaryStage.show();
         this.showLogin();
+       
     }
 
 
@@ -73,8 +79,9 @@ public class MainController extends Application {
             memberStage.initOwner(primaryStage);
             Scene scene = new Scene(memberPage);
             memberStage.setScene(scene);
-
+            
             AddNewLibraryMemberController controller = loader.getController();
+            controller.setAddMemberStage(primaryStage, memberStage);
             controller.setMain(this);
 
             // Show the dialog and wait until the user closes it
