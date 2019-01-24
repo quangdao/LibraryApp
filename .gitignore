@@ -4,4 +4,4 @@
 LibraryApp.iml
 .idea
 bin
-src/dataaccess/storage/*
+src/dataaccess/storage/*.txt
