@@ -1,16 +1,17 @@
 package controller;
 
+import business.Role;
 import dataccess.SampleData;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.awt.Button;
 import java.io.IOException;
 
 public class MainController extends Application {
@@ -34,14 +35,24 @@ public class MainController extends Application {
         primaryStage = stage;
         primaryStage.setTitle("Library App");
         primaryStage.setScene(new Scene(root));
-        
-        // primaryStage.show();
-        this.showLogin();
-       
+
+        Button btnAddMember = (Button) root.lookup("#btnAddMember");
+        Button btnAddBook = (Button) root.lookup("#btnAddBook");
+        Button btnShowCheckoutBook = (Button) root.lookup("#btnShowCheckoutBook");
+
+        Role loginRole = this.showLogin();
+
+        if (loginRole == Role.ADMIN) {
+            btnShowCheckoutBook.setVisible(false);
+        }
+        if (loginRole == Role.LIBRARIAN) {
+            btnAddMember.setVisible(false);
+            btnAddBook.setVisible(false);
+        }
     }
 
 
-    public void showLogin() {
+    public Role showLogin() {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainController.class.getResource("../ui/LoginView.fxml"));
@@ -60,9 +71,12 @@ public class MainController extends Application {
             controller.setMain(this);
             // Show the dialog and wait until the user closes it
             dialogStage.showAndWait();
+
+            return controller.getLoginRole();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return null;
     }
 
     @FXML
