@@ -1,7 +1,9 @@
 package controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -21,6 +23,15 @@ import dataccess.ObjectReader;
 public class AddNewLibraryMemberController {
     private MainController main;
     
+    private Stage addMemberStage; 
+    private Stage primaryStage;
+    
+    public void setAddMemberStage(Stage primaryStage, Stage addMemberStage) {
+		this.primaryStage = primaryStage;
+		this.addMemberStage = addMemberStage;
+	}
+    @FXML
+    private TextField idTextField;
     @FXML
     private TextField firstNameTextField;
     @FXML
@@ -45,16 +56,16 @@ public class AddNewLibraryMemberController {
 		return new Address(street, city, state, zip);
 	}
 	
-	public static Person createAuthor(String firstname, String lastname, String phone, Address address, String credendtials, String bio) {		
-		LocalDateTime currentTime = LocalDateTime.now();
-		String id = ""+currentTime.getYear() + currentTime.getMonth() + currentTime.getDayOfMonth() +currentTime.getHour() +currentTime.getMinute()+currentTime.getSecond();
+	public static Person createAuthor(String id,String firstname, String lastname, String phone, Address address, String credendtials, String bio) {		
+		//LocalDateTime currentTime = LocalDateTime.now();
+		//String id = ""+currentTime.getYear() + currentTime.getMonth() + currentTime.getDayOfMonth() +currentTime.getHour() +currentTime.getMinute()+currentTime.getSecond();
 		Person person = new Author(id, firstname, lastname, phone, address, credendtials,bio); 
 		return person;
 	}
 	
-	public static Member createMember(String firstname, String lastname, String phone, Address address) {		
-		LocalDateTime currentTime = LocalDateTime.now();
-		String id = ""+currentTime.getYear() + currentTime.getMonth() + currentTime.getDayOfMonth() +currentTime.getHour() +currentTime.getMinute()+currentTime.getSecond();
+	public static Member createMember(String id, String firstname, String lastname, String phone, Address address) {		
+		//LocalDateTime currentTime = LocalDateTime.now();
+		//String id = ""+currentTime.getYear() + currentTime.getMonth() + currentTime.getDayOfMonth() +currentTime.getHour() +currentTime.getMinute()+currentTime.getSecond();
 		return new Member(id, firstname, lastname, phone, address);
 	}
 	
@@ -62,23 +73,39 @@ public class AddNewLibraryMemberController {
 //		return new User(member, username, password, role);
 //	}
     
-	
+	public  void ShowMessage(String content) {
+		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+		 alert.initOwner(main.getPrimaryStage());
+	     alert.setTitle("Member");
+	     alert.setHeaderText("Add New Member");
+	     alert.setContentText(content);
+	     alert.showAndWait();         
+	}
 	
     @FXML
     public void addNewMember() {
-    	List<Member> members = (List<Member>)ObjectReader.getObjectByFilename("members");
-    	//List<Member> members = new ArrayList<Member>();
-    	members.add(createMember(firstNameTextField.getText(), lastNameTextField.getText(), phoneTextField.getText(), createAddress(streetTextField.getText(), cityTextField.getText(), stateTextField.getText(), zipTextField.getText())));    
-    	ObjectWriter.Output("members", members);   	
     	
-    	for (Member member : members) {
-			System.out.println(member);
+    	List<Member> members = (List<Member>)ObjectReader.getObjectByFilename("members");
+    	if (idTextField.getText().isEmpty() || firstNameTextField.getText().isEmpty() || lastNameTextField.getText().isEmpty() || phoneTextField.getText().isEmpty() || streetTextField.getText().isEmpty() || cityTextField.getText().isEmpty() || stateTextField.getText().isEmpty() ||zipTextField.getText().isEmpty() ) {
+    		ShowMessage("Please fill out all fields");   
 		}
+    	else {
+    		members.add(createMember(idTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), phoneTextField.getText(), createAddress(streetTextField.getText(), cityTextField.getText(), stateTextField.getText(), zipTextField.getText())));    
+        	ObjectWriter.Output("members", members);   	       	
+        	for (Member member : members) {
+    			System.out.println(member);
+    		}
+    		ShowMessage("Member created successfully");           
+        	this.addMemberStage.close();
+		}
+    	
+	
 
     }
 
     @FXML
     public void cancel() {
+    	this.addMemberStage.close();
     }
 
 
